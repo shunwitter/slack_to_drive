@@ -66,7 +66,7 @@ exports.slack_to_drive = async (req, res) => {
       const pass = new PassThrough()
       stream.pipe(pass);
 
-      const filename = text == null || text == '　' || text.match(/\s/) ? slackFile.name : text.replace(/\n/, '_');
+      const filename = text == null || text == '　' || text.match(/^\s$/) ? slackFile.name : text.replace(/\n/, '_');
 
       drive.files.create({
         requestBody: {
