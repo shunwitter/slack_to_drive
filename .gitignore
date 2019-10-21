@@ -1,0 +1,4 @@
+.env
+credentials/*
+!credentials/.keep
+node_modules

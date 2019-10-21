@@ -1,0 +1,19 @@
+{
+  "name": "photo_to_drive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "npx functions-framework --target=photo_to_drive"
+  },
+  "author": {
+    "name": "Shunsuke Sawada"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.3.2",
+    "dotenv": "^8.2.0",
+    "googleapis": "^39.2.0",
+    "request": "^2.88.0"
+  }
+}
