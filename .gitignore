@@ -2,3 +2,4 @@
 credentials/*
 !credentials/.keep
 node_modules
+.vscode
