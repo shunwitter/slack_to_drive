@@ -24,12 +24,14 @@ exports.slack_to_drive = async (req, res) => {
   const { text, files, user } = event;
 
   if (type !== 'event_callback') {
-    return res.status(500).send('This event is not valid');
+    console.error('This event is not valid');
+    return res.status(500).end();
   }
 
-  slackFile = files ? files[0] : undefined;
+  slackFile = files != null ? files[0] : undefined;
   if (!slackFile) {
-    return res.status(500).send('No file from Slack');
+    console.error('No file from Slack');
+    return res.status(500).end();
   }
 
   const auth = await google.auth.getClient({ scopes: SCOPES });
@@ -86,16 +88,16 @@ exports.slack_to_drive = async (req, res) => {
       }, (fileError, file) => {
         if (fileError) {
           console.error(fileError);
-          returnres.status(500).end();
+          return res.status(500).end();
         } else {
-          // console.log('File: ', file);
+          console.log('File uploaded');
           res.status(200).end();
         }
       });
 
     } else {
-      console.log('No files found.');
-      res.status(500).end();
+      console.error('No files found.');
+      return res.status(500).end();
     }
   });
 
